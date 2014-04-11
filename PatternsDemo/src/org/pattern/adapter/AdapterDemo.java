@@ -1,5 +1,6 @@
 package org.pattern.adapter;
 
+// This is Volt Class
 class Volt{
 	int volt;
 	public Volt(int volt){
@@ -17,6 +18,8 @@ class Volt{
 		return "" + volt;
 	}
 }
+
+// This is Socket Class
 
 class Socket{
 	Volt volt;
