@@ -1,6 +1,5 @@
 package org.dipesh.linkedlist;
 
-
 public class Client {
 
 	public static void main(String[] args) {
@@ -19,30 +18,31 @@ public class Client {
 
 		System.out.println(node.data);
 
+		node = ll.finNthFromEndRecursive(ll.head, 3);
+
+		System.out.println(node.data);
+
 		createLoopInLst(ll);
-		if(ll.isLoopExists()){
+		if (ll.isLoopExists()) {
 			System.out.println("Loop exists");
-		}
-		else{
+		} else {
 			System.out.println("Loop does not exists");
 		}
-
 
 	}
 
 	private static void createLoopInLst(LinkList ll) {
 		ListNode fourthAddress = ll.head;
 		ListNode head;
-		for(int i = 0; i < 3; i++){
+		for (int i = 0; i < 3; i++) {
 			fourthAddress = fourthAddress.next;
 		}
 		head = fourthAddress;
-		while(head.next != null){
+		while (head.next != null) {
 			head = head.next;
 		}
 
-		head.next =  fourthAddress;
-
+		head.next = fourthAddress;
 
 	}
 
