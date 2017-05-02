@@ -5,6 +5,48 @@ public class Client {
 
 	public static void main(String[] args) {
 		LinkList ll = new LinkList();
+
+		fillList(ll);
+		ll.print();
+
+		ll.reverseRecursion(ll.head);
+		ll.print();
+
+		ll.reverseInterative();
+		ll.print();
+
+		ListNode node = ll.finNthFromEnd(2);
+
+		System.out.println(node.data);
+
+		createLoopInLst(ll);
+		if(ll.isLoopExists()){
+			System.out.println("Loop exists");
+		}
+		else{
+			System.out.println("Loop does not exists");
+		}
+
+
+	}
+
+	private static void createLoopInLst(LinkList ll) {
+		ListNode fourthAddress = ll.head;
+		ListNode head;
+		for(int i = 0; i < 3; i++){
+			fourthAddress = fourthAddress.next;
+		}
+		head = fourthAddress;
+		while(head.next != null){
+			head = head.next;
+		}
+
+		head.next =  fourthAddress;
+
+
+	}
+
+	private static void fillList(LinkList ll) {
 		ll.insertFront(4);
 		ll.insertFront(3);
 		ll.insertFront(2);
@@ -15,16 +57,6 @@ public class Client {
 		ll.insertEnd(8);
 		ll.insertEnd(9);
 		ll.insertEnd(10);
-
-		ll.print();
-
-		ll.reverseRecursion(ll.head);
-
-		ll.print();
-
-		ll.reverseInterative();
-		ll.print();
-
 	}
 
 }

@@ -63,4 +63,36 @@ public class LinkList {
 		head = prev;
 	}
 
+	public ListNode finNthFromEnd(int n){
+
+		ListNode nth = head, last = head;
+		for (int i = 0; i < n; i++){
+			if (last != null){
+				last = last.next;
+			}
+			else{
+				return null;
+			}
+		}
+		while(last != null){
+			last = last.next;
+			nth = nth.next;
+		}
+		return nth;
+	}
+
+	public boolean isLoopExists(){
+		boolean loopExists = false;
+		ListNode slow = head;
+		ListNode fast = head;
+		while(fast != null && fast.next != null){
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast){
+				loopExists = true;
+				break;
+			}
+		}
+		return loopExists;
+	}
 }
