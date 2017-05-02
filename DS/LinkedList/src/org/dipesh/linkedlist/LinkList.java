@@ -54,7 +54,7 @@ public class LinkList {
 		ListNode prev, next, current;
 		prev = null;
 		current = head;
-		while (current.next != null) {
+		while (current != null) {
 			next = current.next;
 			current.next = prev;
 			prev = current;
