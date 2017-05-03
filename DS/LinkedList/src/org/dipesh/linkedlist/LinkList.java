@@ -5,6 +5,7 @@ public class LinkList {
 	public ListNode head;
 	private int counter = 0;
 	private ListNode nth;
+	private ListNode thirdNode;
 
 	public LinkList() {
 		head = null;
@@ -179,8 +180,144 @@ public class LinkList {
 
 	}
 
+	// --------------- Need to Test ----------------
+	/**
+	 * Insert a node in the sorted list
+	 */
+	public void inserNodeInTheSortedList(int data) {
+		ListNode temp = head;
+		ListNode prev = null;
+		while (temp != null && data > temp.data) {
+			prev = temp;
+			temp = temp.next;
+		}
+		ListNode newNode = new ListNode(data);
+		prev.next = newNode;
+		newNode.next = temp;
+
+	}
+
+	/**
+	 * Find the merge point of 2 list
+	 */
+	public ListNode findMergPointOfTwoList(ListNode list1, ListNode list2) {
+		ListNode q, p, ret = null;
+		int lenthOfList1 = 0;
+		int lenthOfList2 = 0;
+		int diff = 0;
+		for (p = list1; (q = p.next) != null; p = q) {
+			lenthOfList1++;
+		}
+		for (p = list2; (q = p.next) != null; p = q) {
+			lenthOfList2++;
+		}
+		if (lenthOfList1 > lenthOfList2) {
+			p = list2;
+			q = list1;
+			diff = lenthOfList1 - lenthOfList2;
+		} else {
+			p = list1;
+			q = list2;
+			diff = lenthOfList2 - lenthOfList1;
+		}
+		for (int i = 0; i < diff; i++) {
+			q = q.next;
+		}
+		while (p != null && q != null) {
+			if (p == q) {
+				ret = p;
+				break;
+			}
+			p = p.next;
+			q = q.next;
+		}
+		return ret;
+	}
+
+	/**
+	 * Find the middle of the list
+	 */
+	public ListNode findTheMiddleOfTheList() {
+		ListNode ret = null;
+		ListNode slow = head;
+		ListNode fast = head;
+		if (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		ret = slow;
+		return ret;
+	}
+
+	/**
+	 * Display the list from end
+	 */
+	public void displayReverse(ListNode h) {
+		if (h == null) {
+			return;
+		}
+		displayReverse(h.next);
+		System.out.print(h.data + " -> ");
+	}
+
+	/**
+	 * Merge two sorted list into a third list
+	 */
+	public ListNode mergeTwoSortedList(ListNode list1, ListNode list2) {
+		if (list1 == null)
+			return list2;
+		if (list2 == null) {
+			return list1;
+		}
+		if (list1.data <= list2.data) {
+			thirdNode = list1;
+			thirdNode.next = mergeTwoSortedList(list1.next, list2);
+		} else {
+			thirdNode = list2;
+			thirdNode.next = mergeTwoSortedList(list1, list2.next);
+		}
+		return thirdNode;
+	}
+
+	/**
+	 * Merge two sorted list into a third list iterative
+	 */
+	public ListNode mergeTwoSortedListIterative(ListNode list1, ListNode list2) {
+		ListNode newNode = null;
+		ListNode current = null;
+		while (list1 != null && list2 != null) {
+			if (list1.data < list2.data) {
+				if (newNode == null) {
+					newNode = list1;
+					current = newNode;
+
+				} else {
+					current.next = list1;
+				}
+				list1 = list1.next;
+
+			} else {
+				if (newNode == null) {
+					newNode = list2;
+					current = newNode;
+				} else {
+					current.next = list2;
+				}
+				list2 = list2.next;
+
+			}
+			current = current.next;
+		}
+		if (list1 == null){
+			current.next = list2;
+		} else{
+			current.next = list1;
+		}
+		return newNode;
+	}
+
 	/*---------------------------------------------------------------------*/
-	/*                        Utility Methods                              */
+	/* Utility Methods */
 	/*---------------------------------------------------------------------*/
 
 	/**
