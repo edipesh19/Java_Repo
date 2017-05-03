@@ -123,8 +123,64 @@ public class LinkList {
 		return loopExists;
 	}
 
+	/**
+	 * Find the start node in the loop if there is a loop exists
+	 */
+	public ListNode findTheStartOfTheLoop() {
+		ListNode fast = head;
+		ListNode slow = head;
+		boolean loopExists = false;
+		while (fast != null && fast.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+			if (fast == slow) {
+				loopExists = true;
+				break;
+			}
+		}
+		if (loopExists) {
+			slow = head;
+			while (slow != fast) {
+				slow = slow.next;
+				fast = fast.next;
+			}
+			return slow;
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * Find the length of the loop
+	 */
+	public int lengthOfTheLoop() {
+
+		boolean loopExists = false;
+		int length = -1;
+		ListNode slow = head;
+		ListNode fast = head;
+
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast) {
+				loopExists = true;
+				break;
+			}
+		}
+		if (loopExists) {
+			do {
+				slow = slow.next;
+				length++;
+			} while (slow != fast);
+		}
+
+		return length;
+
+	}
+
 	/*---------------------------------------------------------------------*/
-	/*						  Utility Methods							   */
+	/* Utility Methods */
 	/*---------------------------------------------------------------------*/
 
 	/**

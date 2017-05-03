@@ -16,11 +16,11 @@ public class Client {
 
 		ListNode node = ll.finNthFromEnd(2);
 
-		System.out.println(node.data);
+		System.out.println("2nd node from end = " + node.data);
 
 		node = ll.finNthFromEndRecursive(ll.head, 3);
 
-		System.out.println(node.data);
+		System.out.println("3rd node from end = " + node.data);
 
 		createLoopInLst(ll);
 		if (ll.isLoopExists()) {
@@ -28,6 +28,11 @@ public class Client {
 		} else {
 			System.out.println("Loop does not exists");
 		}
+
+		node = ll.findTheStartOfTheLoop();
+		System.out.println(node.data);
+
+		System.out.println(ll.lengthOfTheLoop());
 
 	}
 
