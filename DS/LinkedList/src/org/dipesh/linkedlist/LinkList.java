@@ -316,6 +316,58 @@ public class LinkList {
 		return newNode;
 	}
 
+	public ListNode reverseLinkListInPair(ListNode h){
+		ListNode temp;
+		if (h == null) {
+			return null;
+		}
+		// Swap 2 node
+		temp = h.next;
+		h.next = temp.next;
+		temp.next = h;
+		h = temp;
+		if (h.next != null) {
+			h.next.next = reverseLinkListInPair(h.next.next);
+		}
+		return h;
+	}
+
+	public ListNode reverseLinkListInPairIterative (ListNode h) {
+		ListNode temp = null;
+		ListNode ret = null;
+		while(h != null && h.next != null){
+			if (temp == null){
+				ret = h.next;
+			}
+			temp = h.next;
+			h = temp.next;
+			temp.next = h;
+			h = h.next;
+		}
+		return ret;
+	}
+
+	public ListNode reverseKNodesRecursively(ListNode head, int k){
+		ListNode current = head;
+		ListNode next = null;
+		ListNode prev = null;
+		int count = k;
+		while(current != null && count > 0){
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current =next;
+			count--;
+		}
+		while(next != null){
+			head.next = reverseKNodesRecursively(next, k);
+		}
+		return prev;
+	}
+
+	public ListNode reverseKNodesIteratively(ListNode head, int k){
+		return null;
+	}
 	/*---------------------------------------------------------------------*/
 	/* Utility Methods */
 	/*---------------------------------------------------------------------*/
