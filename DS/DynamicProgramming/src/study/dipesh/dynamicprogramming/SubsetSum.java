@@ -1,7 +1,7 @@
 package study.dipesh.dynamicprogramming;
 
 /**
- * @author Dipesh K Dutta
+ * @author Dipesh K Dutta.
  *
  *Given an array of non negative numbers and a total, is there subset of numbers in this array which adds up
  * to given total. Another variation is given an array is it possible to split it up into 2 equal
