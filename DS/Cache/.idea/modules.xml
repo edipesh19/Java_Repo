@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LRUCache.iml" filepath="$PROJECT_DIR$/LRUCache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Cache.iml" filepath="$PROJECT_DIR$/Cache.iml" />
     </modules>
   </component>
 </project>

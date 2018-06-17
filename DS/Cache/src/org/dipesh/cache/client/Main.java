@@ -1,10 +1,9 @@
-package eorg.dipesh.treeparent.client;
+package org.dipesh.cache.client;
 
-import eorg.dipesh.treeparent.Cache;
-import eorg.dipesh.treeparent.LRUCache;
+import org.dipesh.cache.Cache;
+import org.dipesh.cache.LRUCache;
 
 import java.util.Map;
-import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
